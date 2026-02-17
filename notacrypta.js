@@ -1,14 +1,15 @@
 /* ==========================================================
-   Evercrypt – Client-Side Encryption Library
+   NotaCrypta – Client-Side Encryption Library
    Version: EV1
    License: MIT
    ========================================================== */
 
-const Evercrypt = (() => {
+const NotaCrypta = (() => {
 
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
 
+    // Keep EV1 for backward/format compatibility (you can rename later if desired)
     const VERSION = "EV1";
     const SALT_LENGTH = 16;
     const IV_LENGTH = 12;
@@ -109,7 +110,7 @@ const Evercrypt = (() => {
 
         const version = decoder.decode(data.slice(0, 3));
         if (version !== VERSION) {
-            throw new Error("Unsupported Evercrypt format");
+            throw new Error("Unsupported NotaCrypta format");
         }
 
         const salt = data.slice(3, 3 + SALT_LENGTH);
