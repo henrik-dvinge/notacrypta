@@ -1,36 +1,36 @@
-# Evercrypt Encryption Format (EV1)
+# NotaCrypta Encryption Format (EV1)
 
-Evercrypt encrypted data is fully self-contained and versioned.
+Encrypted data is self-contained and versioned.
 
-## Byte Layout
+## Byte layout (before hex encoding)
 
-| Field        | Size (bytes) |
-|--------------|--------------|
-| Version      | 3 ("EV1")    |
-| Salt         | 16           |
-| IV (nonce)   | 12           |
-| Ciphertext   | Variable     |
-| Auth Tag     | Included     |
+| Field               | Size (bytes) |
+|--------------------|--------------|
+| Version            | 3 (`"EV1"`)  |
+| Salt               | 16           |
+| IV / nonce         | 12           |
+| Ciphertext + tag   | Variable     |
 
-AES-GCM appends the authentication tag to the ciphertext automatically.
+**Note:** In AES-GCM (WebCrypto), the authentication tag is appended to the ciphertext output (typically 16 bytes).
 
 ## Encoding
 
 The full byte sequence is encoded as:
 
-- Base16 (hexadecimal)
+- Base16 (hex)
 - Lowercase letters only
-- URL-safe and copy/paste safe
+- ASCII-only and copy/paste friendly  
+- Suitable for URLs when **URL-encoded** (recommended)
 
-## Example (conceptual)
+## Conceptual example
 
-EV1 | salt | iv | encrypted data + auth tag
+`EV1 | salt | iv | (ciphertext || authTag)`
 
 ## Versioning
 
 Future versions may:
 - Increase PBKDF2 iterations
-- Change key derivation method
-- Add metadata fields
+- Change key derivation parameters
+- Add optional metadata fields
 
-Older encrypted data remains decryptable.
+Older encrypted data should remain decryptable where feasible.
