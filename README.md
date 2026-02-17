@@ -33,7 +33,7 @@ password managers, and enterprise systems.
 
 - Confidentiality: encrypted data cannot be read
 - Integrity: tampering is automatically detected
-- Zero-knowledge: Evercrypt cannot decrypt user data
+- Zero-knowledge: NotaCrypta cannot decrypt user data
 - Forward compatibility via format versioning
 
 ## Threat Model
