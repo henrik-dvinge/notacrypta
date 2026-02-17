@@ -1,6 +1,6 @@
-# Evercrypt Client-Side Encryption
+# NotaCrypta Client-Side Encryption
 
-Evercrypt is a zero-knowledge encryption system that encrypts all data
+NotaCrypta is a zero-knowledge encryption system that encrypts all data
 locally in the browser before anything is sent or stored.
 
 ## Core Principles
@@ -15,7 +15,7 @@ Encryption and decryption continue to work offline.
 
 ## Cryptographic Standards
 
-Evercrypt uses modern, well-established standards:
+NotaCrypta uses modern, well-established standards:
 
 - **AES-256-GCM** (Authenticated Encryption)
 - **PBKDF2 (SHA-256)** with 250,000 iterations
