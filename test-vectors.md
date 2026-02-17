@@ -1,4 +1,4 @@
-# Evercrypt Test Vectors
+# NotaCrypta Test Vectors
 
 These vectors allow independent verification
 of correct encryption and decryption behavior.
@@ -9,7 +9,7 @@ of correct encryption and decryption behavior.
 
 Plaintext:
 ```
-Hello Evercrypt
+Hello NotaCrypta
 ```
 
 Password:
@@ -44,7 +44,7 @@ Expected behavior:
 
 ## Verification Notes
 
-Because Evercrypt uses random salt and IV:
+Because NotaCrypta uses random salt and IV:
 - Ciphertext output is non-deterministic
 - Correctness is verified by successful decryption
 - Tampering causes decryption failure
