@@ -5,6 +5,8 @@
 
 NotaCrypta is a **zero-knowledge** client-side encryption tool. Text is encrypted and decrypted **locally in your browser** — NotaCrypta never receives your plaintext or your encryption key.
 
+The name **NotaCrypta** is a blend of two Latin concepts: "nota" (a written note or mark) and "crypta" (a hidden vault or chamber). Together, they represent **a private vault where your notes stay hidden, protected, and yours alone.**
+
 ## What this repository is
 This repository contains the JavaScript encryption code used by NotaCrypta (AES-256-GCM + PBKDF2).  
 If you just want to use the tool, open: https://notacrypta.com
