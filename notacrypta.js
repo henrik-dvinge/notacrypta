@@ -24,9 +24,13 @@ const NotaCrypta = (() => {
     }
 
     function hexToBytes(hex) {
-        if (hex.length % 2 !== 0) {
+        if (typeof hex !== "string") throw new Error("Invalid hex input");
+        hex = hex.trim();
+
+        if (hex.length === 0 || (hex.length % 2 !== 0)) {
             throw new Error("Invalid hex input");
         }
+
         const bytes = new Uint8Array(hex.length / 2);
         for (let i = 0; i < bytes.length; i++) {
             bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
@@ -108,6 +112,11 @@ const NotaCrypta = (() => {
 
         const data = hexToBytes(hexData);
 
+        const minLen = 3 + SALT_LENGTH + IV_LENGTH;
+        if (data.length < minLen) {
+            throw new Error("Data too short");
+        }
+
         const version = decoder.decode(data.slice(0, 3));
         if (version !== VERSION) {
             throw new Error("Unsupported NotaCrypta format");
@@ -119,13 +128,18 @@ const NotaCrypta = (() => {
 
         const key = await deriveKey(password, salt);
 
-        const decrypted = await crypto.subtle.decrypt(
-            { name: "AES-GCM", iv },
-            key,
-            ciphertext
-        );
+        try {
+            const decrypted = await crypto.subtle.decrypt(
+                { name: "AES-GCM", iv },
+                key,
+                ciphertext
+            );
 
-        return decoder.decode(decrypted);
+            return decoder.decode(decrypted);
+        } catch {
+            // AES-GCM authentication failed (wrong key or modified ciphertext)
+            throw new Error("Decryption failed (wrong key or corrupted data)");
+        }
     }
 
     return {
