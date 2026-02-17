@@ -3,6 +3,9 @@
 NotaCrypta is a zero-knowledge encryption system that encrypts all data
 locally in the browser before anything is sent or stored.
 
+**Website:** https://notacrypta.com  
+**Live tool:** https://notacrypta.com/
+
 > The name **NotaCrypta** comes from two roots — *nota* (“note” / written record) and *crypta* (“crypt” / vault). It represents a simple idea: a place where your secrets stay hidden, protected, and yours alone.
 
 ## Core Principles
